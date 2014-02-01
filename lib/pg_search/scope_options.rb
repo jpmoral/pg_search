@@ -6,17 +6,18 @@ module PgSearch
   class ScopeOptions
     attr_reader :config, :feature_options
 
-    def initialize(config)
+    def initialize(config, name)
       @config = config
       @model = config.model
       @feature_options = config.feature_options
+      @name = name
     end
 
     def apply(scope)
       scope.
-        select("#{quoted_table_name}.*, (#{rank}) AS pg_search_rank").
+        select("#{quoted_table_name}.*, (#{rank}) AS #{name}_pg_search_rank").
         where(conditions).
-        order("pg_search_rank DESC, #{order_within_rank}").
+        order("#{name}_pg_search_rank DESC, #{order_within_rank}").
         joins(joins).
         extend(DisableEagerLoading)
     end
