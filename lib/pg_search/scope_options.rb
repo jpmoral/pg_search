@@ -15,9 +15,9 @@ module PgSearch
 
     def apply(scope)
       scope.
-        select("#{quoted_table_name}.*, (#{rank}) AS #{name}_pg_search_rank").
+        select("#{quoted_table_name}.*, (#{rank}) AS #{@name}_pg_search_rank").
         where(conditions).
-        order("#{name}_pg_search_rank DESC, #{order_within_rank}").
+        order("#{@name}_pg_search_rank DESC, #{order_within_rank}").
         joins(joins).
         extend(DisableEagerLoading)
     end
