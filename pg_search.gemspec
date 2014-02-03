@@ -4,7 +4,7 @@ require "pg_search/version"
 
 Gem::Specification.new do |s|
   s.name        = "pg_search"
-  s.version     = PgSearch::VERSION
+  s.version     = PgSearch::VERSION.dup
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Grant Hutchins", "Case Commons, LLC"]
   s.email       = ["gems@nertzy.com", "casecommons-dev@googlegroups.com"]
